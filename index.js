@@ -7,6 +7,11 @@ const PORT = 3000;
 
 app.get('/tikdl', async (req, res) => {
     const { link } = req.query;
+
+    if (!link) {
+        return res.status(400).json({ error: 'Link is required' });
+    }
+
     const url = "https://tiktokio.com/api/v1/tk-htmx";
     
     const data = new URLSearchParams({
